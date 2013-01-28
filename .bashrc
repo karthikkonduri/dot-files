@@ -68,10 +68,10 @@ if ${use_color} ; then
 
 	if [[ ${EUID} == 0 ]] ; then
 		#PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-        PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \[\033[00m\]'$bold$red'`echo $? | sed '\''s/^0\$//'\''`'$yellow' \$'$normal$roman' '
+        PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \[\033[00m\]'$bold$red'`echo $? | sed '\''s/^0\$//'\''`'" [\$(date +%k:%M:%S)]"''$yellow' \n\$'$normal$roman' '
 	else
 		#PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
-        PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \[\033[00m\]'$bold$red'`echo $? | sed '\''s/^0\$//'\''`'$yellow' \$'$normal$roman' '
+        PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \[\033[00m\]'$bold$yellow'`echo $? | sed '\''s/^0\$//'\''`'"$normal [\$(date +%k:%M:%S)]"''$yellow' \n\$'$normal$roman' '
 	fi
 
 #	alias ls='ls --color=auto'
