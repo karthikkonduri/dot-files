@@ -235,7 +235,7 @@ a() { alias $1=cd\ $PWD; }
 
 alias s3cmd="s3cmd --guess-mime-type"
 alias dict="/home/shadyabhi/codes/godict/pretty_print.py"
-alias p="curl -s -F 'sprunge=<-' http://sprunge.us | perl -ne 'chomp and print' | xclip -selection c && xclip -o -selection c"
+alias p="curl -s -F 'sprunge=<-' http://sprunge.us | perl -ne 'chomp and print' | xclip -selection c && xclip -o -selection c;echo"
 alias pd="python2 ~/directi/scripts/pb.py"
 alias N="sudo netcfg "
 alias dnddir="cd /media/misc1/D"
