@@ -199,7 +199,7 @@ mtx()
     rsync -avze 'ssh -i /home/shadyabhi/.ssh/id_rsa_directi -F /home/shadyabhi/.ssh/directi_ssh_config' $1 xbox.internal.directi.com:/home/abhijeet.ras/$2
 }
 
-s3upload()
+s3uploadpublic()
 {
     s3cmd put --acl-public $1 s3://s3files.abhijeetr.com
 }
