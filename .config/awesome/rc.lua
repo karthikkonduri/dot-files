@@ -249,6 +249,16 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
     -- Custom
+    awful.key({ }, "XF86TouchpadToggle", function() awful.util.spawn(awful.util.getdir("config") .. "/scripts/locktouchpad.sh") end),
+    awful.key({ }, "XF86PowerOff", function() awful.util.spawn(awful.util.getdir("config") .. "/scripts/shutdown.sh") end),
+    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer sset Master toggle") end),
+    awful.key({ }, "XF86AudioNext", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
+    awful.key({ }, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Prev") end),
+    awful.key({ }, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("amixer -q set Master 2dB-") end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer -q set Master 2dB+") end),
+    awful.key({ modkey, }, "l", function() awful.util.spawn(awful.util.getdir("config") .. "/scripts/lockscreen.sh") end),
+    awful.key({modkey}, "d", function() awful.util.spawn("/home/shadyabhi/codes/godict/godict.py") end),
     -- App shortcuts
     awful.key({ modkey, }, "t", function() awful.util.spawn("/usr/bin/thunderbird") end),
     awful.key({ modkey, }, "b", function() awful.util.spawn("/usr/bin/nautilus") end),
