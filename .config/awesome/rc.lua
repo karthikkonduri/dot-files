@@ -119,6 +119,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mytextclock = awful.widget.textclock()
 
 
+-- Start of Custom widgets
+
 -- Create battery widget
 baticon = wibox.widget.imagebox()
 baticon:set_image(awful.util.getdir("config") .. "/icons/bat.png")
@@ -135,10 +137,30 @@ vicious.register(batwidget, vicious.widgets.bat,
         end
     end, 5, "BAT0"
 )
+
 cpuicon = wibox.widget.imagebox()
 cpuicon:set_image(awful.util.getdir("config") .. "/icons/cpu.png")
 cpuwidget = wibox.widget.textbox()
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1%") -- Create a wibox for each screen and add it
+
+--Volume scrolling
+volicon = wibox.widget.imagebox()
+volicon:set_image(awful.util.getdir("config") .. "/icons/vol.png")
+volwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.volume)
+vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "Master")
+-- Add listen events for both icon and text
+volwidget:buttons(awful.util.table.join(
+                     awful.button({ }, 1, function () os.execute("gnome-alsamixer") end),
+                     awful.button({ }, 4, function () os.execute("amixer -q set Master 2dB+") vicious.force({volwidget}) end),
+                     awful.button({ }, 5, function () os.execute("amixer -q set Master 2dB-") vicious.force({volwidget}) end))
+                     )
+volicon:buttons(awful.util.table.join(
+                     awful.button({ }, 1, function () os.execute("gnome-alsamixer") end),
+                     awful.button({ }, 4, function () os.execute("amixer -q set Master 2dB+") vicious.force({volwidget}) end),
+                     awful.button({ }, 5, function () os.execute("amixer -q set Master 2dB-") vicious.force({volwidget}) end))
+                     )
+-- End of Custom Widgets
 
 mywibox = {}
 mypromptbox = {}
@@ -222,6 +244,7 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(cpuicon)
     right_layout:add(cpuwidget)
+    right_layout:add(volicon)
     right_layout:add(volwidget)
     right_layout:add(baticon)
     right_layout:add(batwidget)
