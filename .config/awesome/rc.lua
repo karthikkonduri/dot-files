@@ -151,12 +151,10 @@ vicious.cache(vicious.widgets.volume)
 vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "Master")
 -- Add listen events for both icon and text
 volwidget:buttons(awful.util.table.join(
-                     awful.button({ }, 1, function () os.execute("gnome-alsamixer") end),
                      awful.button({ }, 4, function () os.execute("amixer -q set Master 2dB+") vicious.force({volwidget}) end),
                      awful.button({ }, 5, function () os.execute("amixer -q set Master 2dB-") vicious.force({volwidget}) end))
                      )
 volicon:buttons(awful.util.table.join(
-                     awful.button({ }, 1, function () os.execute("gnome-alsamixer") end),
                      awful.button({ }, 4, function () os.execute("amixer -q set Master 2dB+") vicious.force({volwidget}) end),
                      awful.button({ }, 5, function () os.execute("amixer -q set Master 2dB-") vicious.force({volwidget}) end))
                      )
