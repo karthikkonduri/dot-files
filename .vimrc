@@ -125,3 +125,4 @@ map <Esc>s :wq<CR>
 "Tabularize
 nmap <leader>a> :Tabularize /=><cr>
 vmap <leader>a> :Tabularize /=><cr>
+set fileformats=unix
