@@ -189,7 +189,7 @@ swiki()
 
 vl()
 {
-    cmd=`echo $1 | sed -e 's/:\([0-9]\)/ +\1/' -e 's/:$//'`
+    cmd=`echo $1 | sed -r 's/(.+):([0-9]+).+/\1 +\2/g'`
     vim $cmd
 }
 
